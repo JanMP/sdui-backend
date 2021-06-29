@@ -1,3 +1,4 @@
+import {Meteor} from 'meteor/meteor'
 import {Roles} from 'meteor/alanning:roles'
 import {useTracker} from 'meteor/react-meteor-data'
 
