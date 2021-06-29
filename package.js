@@ -10,6 +10,8 @@ Package.describe({
   documentation: 'README.md'
 });
 
+Npm.depends({})
+
 Package.onUse(function(api) {
   api.versionsFrom('2.2');
   api.use('coffeescript');
@@ -27,6 +29,6 @@ Package.onTest(function(api) {
   api.use('coffeescript');
   api.use('ecmascript');
   api.use('tinytest');
-  api.use('sdui-backend');
+  api.use('janmp:sdui-backend');
   api.mainModule('sdui-backend-tests.js');
 });
