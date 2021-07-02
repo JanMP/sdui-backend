@@ -8,7 +8,7 @@ export default createDefaultPipeline = ({getPreSelectPipeline, getProcessorPipel
 
   searchPipeline = ({search}) ->
     if search? and search isnt ''
-      keys = listSchema._firstLevelSchemaKeys.filter (key) -> not listSchema._schema[key].AutoTable?.hide
+      keys = listSchema._firstLevelSchemaKeys.filter (key) -> not listSchema._schema[key].autotable?.hide
       fieldSearches = keys.map (key) ->
         switch listSchema.getQuickTypeForKey key
           when 'string', 'stringArray'
