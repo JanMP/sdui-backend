@@ -1,4 +1,4 @@
 
 export { default as createAutoDataTableBackend } from './imports/api/createAutoDataTableBackend.coffee';
-export {userWithIdIsInRole, currentUserIsInRole, useCurrentUserIsInRole, currentUserMustBeInRole} from './imports/helpers/roleChecks'
-export {default as downloadAsFile} from './imports/helpers/downloadAsFile'
+export { default as getColumnsToExport } from './imports/helpers/getColumnsToExport'
+export { default as downloadAsFile } from './imports/helpers/downloadAsFile'

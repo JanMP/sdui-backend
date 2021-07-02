@@ -10,9 +10,9 @@ Package.describe({
   documentation: 'README.md'
 });
 
-Npm.depends({})
+Npm.depends({});
 
-Package.onUse(function(api) {
+Package.onUse(function (api) {
   api.versionsFrom('2.2');
   api.use('coffeescript');
   api.use('coagmano:stylus');
@@ -20,12 +20,13 @@ Package.onUse(function(api) {
   api.use('alanning:roles');
   api.use('mdg:validated-method');
   api.use('momentjs:moment');
-  api.use('peerlibrary:reactive-publish')
+  api.use('peerlibrary:reactive-publish');
   api.use('tunguska:reactive-aggregate');
+  api.use('janmp:sdui-roles');
   api.mainModule('sdui-backend.js');
 });
 
-Package.onTest(function(api) {
+Package.onTest(function (api) {
   api.use('coffeescript');
   api.use('ecmascript');
   api.use('tinytest');
