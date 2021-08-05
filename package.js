@@ -23,7 +23,7 @@ Package.onUse(function (api) {
   api.use('momentjs:moment');
   api.use('peerlibrary:reactive-publish');
   api.use('tunguska:reactive-aggregate');
-  api.use('janmp:sdui-roles');
+  api.use('janmp:sdui-rolechecks');
   api.mainModule('sdui-backend.js');
 });
 

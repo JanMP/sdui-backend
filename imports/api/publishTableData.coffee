@@ -1,6 +1,6 @@
 import {Meteor} from 'meteor/meteor'
 import { ReactiveAggregate } from 'meteor/tunguska:reactive-aggregate'
-import {userWithIdIsInRole} from 'meteor/janmp:sdui-roles'
+import {userWithIdIsInRole} from 'meteor/janmp:sdui-rolechecks'
 
 export default publishTableData = ({viewTableRole, sourceName, collection,
 getRowsPipeline, getRowCountPipeline, debounceDelay = 500})  ->

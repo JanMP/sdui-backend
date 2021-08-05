@@ -21,13 +21,10 @@ export default createAutoDataTableBackend = (definition) ->
     rowsCollection, rowCountCollection
     listSchema
     getPreSelectPipeline
-    pipelineMiddle, getProcessorPipeline, getRowsPipeline, getRowCountPipeline, getExportPipeline
-    redrawTrigger,
+    getProcessorPipeline, getRowsPipeline, getRowCountPipeline, getExportPipeline
     debounceDelay
   } = definition
 
-  if redrawTrigger?
-    console.warn 'redrawTrigger is not supported anymore'
 
   unless sourceName?
     throw new Error 'no sourceName given'
@@ -51,7 +48,7 @@ export default createAutoDataTableBackend = (definition) ->
     console.warn "[createAutoDataTableBackend #{sourceName}]: pipelineMiddle is deprecated. Please use getProcessorPipeline"
   
   getPreSelectPipeline ?= -> []
-  getProcessorPipeline ?= -> pipelineMiddle ? []
+  getProcessorPipeline ?= -> []
 
   listSchema ?= sourceSchema
   formSchema ?= sourceSchema

@@ -3,7 +3,7 @@ import {Mongo} from 'meteor/mongo'
 import {ValidatedMethod} from 'meteor/mdg:validated-method'
 import SimpleSchema from 'simpl-schema'
 import schemaWithId from '../helpers/schemaWithId'
-import {currentUserMustBeInRole} from 'meteor/janmp:sdui-roles'
+import {currentUserMustBeInRole} from 'meteor/janmp:sdui-rolechecks'
 
 import _ from 'lodash'
 
