@@ -47,6 +47,7 @@ export default createAutoDataTableBackend = (definition) ->
   if pipelineMiddle?
     console.warn "[createAutoDataTableBackend #{sourceName}]: pipelineMiddle is deprecated. Please use getProcessorPipeline"
   
+  # setup default props
   getPreSelectPipeline ?= -> []
   getProcessorPipeline ?= -> []
 
@@ -54,10 +55,11 @@ export default createAutoDataTableBackend = (definition) ->
   formSchema ?= sourceSchema
 
   listSchemaBridge = new SimpleSchema2Bridge(listSchema)
-  if listSchema is formSchema
-    formSchemaBridge = listSchemaBridge
-  else
-    formSchemaBridge = new SimpleSchema2Bridge(formSchema)
+  formSchemaBridge =
+    if listSchema is formSchema
+      listSchemaBridge
+    else
+      new SimpleSchema2Bridge(formSchema)
 
   {defaultGetRowsPipeline
   defaultGetRowCountPipeline
@@ -67,14 +69,13 @@ export default createAutoDataTableBackend = (definition) ->
   getRowCountPipeline ?= defaultGetRowCountPipeline
   getExportPipeline ?= defaultGetExportPipeline
 
-  if usePubSub
-    if Meteor.isClient
-      rowsCollection ?= new Mongo.Collection "#{sourceName}.rows"
-      rowCountCollection ?= new Mongo.Collection "#{sourceName}.count"
-    
-    publishTableData {
-      viewTableRole, sourceName, collection,
-      getRowsPipeline, getRowCountPipeline, debounceDelay
+  if Meteor.isClient # setup local collections for publications
+    rowsCollection ?= new Mongo.Collection "#{sourceName}.rows"
+    rowCountCollection ?= new Mongo.Collection "#{sourceName}.count"
+  
+  publishTableData {
+    viewTableRole, sourceName, collection,
+    getRowsPipeline, getRowCountPipeline, debounceDelay
     }
 
   createTableDataMethods {
