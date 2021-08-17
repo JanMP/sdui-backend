@@ -17,7 +17,6 @@ export default createAutoDataTableBackend = (definition) ->
     canAdd
     canDelete
     canExport
-    usePubSub
     rowsCollection, rowCountCollection
     listSchema
     getPreSelectPipeline
@@ -88,7 +87,7 @@ export default createAutoDataTableBackend = (definition) ->
   #return props for the ui component
   {
     sourceName, listSchemaBridge, formSchemaBridge
-    usePubSub, rowsCollection, rowCountCollection
+    rowsCollection, rowCountCollection
     canEdit
     canSearch
     canAdd

@@ -15,7 +15,6 @@ Npm.depends({});
 Package.onUse(function (api) {
   api.versionsFrom('2.3');
   api.use('coffeescript');
-  api.use('coagmano:stylus');
   api.use('ecmascript');
   api.use('typescript')
   api.use('alanning:roles');
