@@ -2,7 +2,7 @@ import getColumnsToExport from '../helpers/getColumnsToExport'
 import _ from 'lodash'
 
 export default createDefaultPipeline = ({getPreSelectPipeline, getProcessorPipeline, listSchema}) ->
- 
+
   getPreSelectPipeline ?= -> []
   getProcessorPipeline ?= -> []
 
@@ -48,22 +48,19 @@ export default createDefaultPipeline = ({getPreSelectPipeline, getProcessorPipel
       .mapValues -> 1
       .value()
   
-  defaultGetRowsPipeline = ({search, query, sort = {_id: 1}, limit = 100, skip = 0}) ->
-    query ?= {}
+  defaultGetRowsPipeline = ({search, query = {}, sort = {_id: 1}, limit = 100, skip = 0}) ->
     [getPreSelectPipeline()...,
     {$match: query},
     getProcessorPipeline()...,
     (searchPipeline {search})...,
     {$sort: sort}, {$skip: skip}, {$limit: limit}]
   
-  defaultGetRowCountPipeline = ({search, query}) ->
-    query ?= {}
+  defaultGetRowCountPipeline = ({search, query = {}}) ->
     [getPreSelectPipeline()...,
     {$match: query}, getProcessorPipeline()..., (searchPipeline {search})...,
     {$count: 'count'}, $addFields: _id: "count"]
 
-  defaultGetExportPipeline = ({search, query, sort = {_id: 1}}) ->
-    query ?= {}
+  defaultGetExportPipeline = ({search, query = {}, sort = {_id: 1}}) ->
     [getPreSelectPipeline()...,
     {$match: query}, getProcessorPipeline()..., (searchPipeline {search})...,
     {$sort: sort}, projectStage]

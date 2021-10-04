@@ -6,21 +6,23 @@ import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2'
 
 export default createAutoDataTableBackend = (definition) ->
   {
-    viewTableRole
-    editRole
-    exportTableRole
     sourceName, sourceSchema, collection
+    listSchema
     useObjectIds
-    canEdit, formSchema,
-    makeFormDataFetchMethodRunFkt, makeSubmitMethodRunFkt, makeDeleteMethodRunFkt
+    viewTableRole
     canSearch
+    canEdit, formSchema,
+    editRole
     canAdd
     canDelete
     canExport
-    rowsCollection, rowCountCollection
-    listSchema
+    exportTableRole
     getPreSelectPipeline
-    getProcessorPipeline, getRowsPipeline, getRowCountPipeline, getExportPipeline
+    getProcessorPipeline,
+    # CHECK if they work or if we should get rid of the following:
+    getRowsPipeline, getRowCountPipeline, getExportPipeline
+    rowsCollection, rowCountCollection
+    makeFormDataFetchMethodRunFkt, makeSubmitMethodRunFkt, makeDeleteMethodRunFkt
     debounceDelay
   } = definition
 
@@ -80,7 +82,8 @@ export default createAutoDataTableBackend = (definition) ->
   createTableDataMethods {
     viewTableRole, editRole, exportTableRole, sourceName, collection, useObjectIds,
     getRowsPipeline, getRowCountPipeline, getExportPipeline
-    canEdit, canDelete, canExport, formSchema, makeFormDataFetchMethodRunFkt, makeSubmitMethodRunFkt
+    canEdit, canDelete, canExport, formSchema,
+    makeFormDataFetchMethodRunFkt, makeSubmitMethodRunFkt, makeDeleteMethodRunFkt
   }
 
 
