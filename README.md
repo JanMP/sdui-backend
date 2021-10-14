@@ -40,7 +40,7 @@ The schemas can contain aditional fields for uniforms (see the uniforms document
 ## Example
 
 In this example we set up a collection with some test data.
-The table rows contain to numbers a and b. We use getProcessorPipeline to
+The table rows contain two numbers a and b. We use getProcessorPipeline to
 add those numbers together and put them into a new field sum. Even though the source collection
 does not conatin the sum of a and b we can search and sort by this sum.
 
